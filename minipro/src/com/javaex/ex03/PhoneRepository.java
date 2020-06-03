@@ -14,9 +14,12 @@ import com.javaex.ex01.Person;
 
 public class PhoneRepository {
 
-    
+
+	
     //phoneDB.txt 파일을 읽어 모든 전화번호(리스트)를 전달하는 메소드
 	public List<Person> getList() throws IOException{
+		
+		
 		
 		InputStream is = new FileInputStream("c:\\javaStudy\\workspace\\minipro\\PhoneDB.txt");
     	InputStreamReader isr = new InputStreamReader(is,"UTF-8");
@@ -29,7 +32,7 @@ public class PhoneRepository {
 			{
 				String[] s = str.split(",");
 				Person p = new Person(s[0],s[1],s[2]);		
-				pList.add(p);
+				phoneList.add(p);
 			}
 			catch(NullPointerException n)
 			{
@@ -40,12 +43,19 @@ public class PhoneRepository {
 				break;
 			}
 		}
-		return pList;
+		return phoneList;
 	}
 
 	//phoneDB.txt 에 모든 전화번호 리스트를 저장하는 메소드
 	private void saveInfo(List<Person> list) throws IOException{
-		
+		Writer fw = new FileWriter("c:\\javaStudy\\workspace\\minipro\\PhoneDB.txt",true);
+    	BufferedWriter bfw = new BufferedWriter(fw);
+    	
+    	for(Person p : phoneList)
+    	{
+    		String c = p.getName()+","+p.getHp()+","+p.getCompany();
+    		bfw.write(c);	
+    	}
 		
 	}
 	

@@ -21,8 +21,11 @@ public class PhoneApp {
     	InputStreamReader isr = new InputStreamReader(is,"UTF-8");
     	BufferedReader br = new BufferedReader(isr);
     	Writer fw = new FileWriter("c:\\javaStudy\\workspace\\minipro\\PhoneDB.txt",true);
-    	BufferedWriter bfw = new BufferedWriter(fw);
-    	
+      	BufferedWriter bw = new BufferedWriter(fw);
+      	//파일 삭제를 위한 fw1,fr1
+		
+	
+		
     	List<Person> PL = new ArrayList<Person>();
     	String b;
     	
@@ -59,9 +62,10 @@ public class PhoneApp {
     				}
     			}
     			System.out.println("1.리스트");
+    			int i=1;
     			for(Person p : PL)
 				{
-    				int i=1;
+    				
 					System.out.print(i+".");
 					p.showinfo();
 					++i;
@@ -79,19 +83,32 @@ public class PhoneApp {
 				System.out.print("[등록되었습니다.]");
 				System.out.println("");
 				String c = p1.getName()+","+p1.getHp()+","+p1.getCompany();
-				bfw.write(c);
 				PL.add(p1);
-				
+				System.out.println(c);
+				bw.write(c);
+				bw.write("\n");
+			
     		}
     		else if(a==3)
     		{
+    			Writer fw1 = new FileWriter("c:\\javaStudy\\workspace\\minipro\\PhoneDB.txt");
+    	      	BufferedWriter bw1 = new BufferedWriter(fw1);
     			int i;
     			System.out.println("<3.삭제>");
     			System.out.println(">번호 : ");
     			i = sc.nextInt();
     			PL.remove(i-1);
+    			for(Person p : PL)
+    			{
+    				String c = p.getName()+","+p.getHp()+","+p.getCompany();
+    				bw1.write(c);
+    				bw1.write("\n");
+    			}
     			System.out.println("[삭제되었습니다.]");	
+
+    	    	bw1.close();
     		}
+    		
     		else if(a==4)
     		{
     			System.out.println("4.검색");
@@ -120,7 +137,7 @@ public class PhoneApp {
     		}
     		
     	}
-  
+    	bw.close();
     }
 
 }

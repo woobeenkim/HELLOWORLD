@@ -36,12 +36,28 @@ public class PhoneView {
 
 	// 1.리스트 : 데이터를 받아 리스트를 출력하는 메소드
 	public void showList(List<Person> phoneList) {
-		
+		System.out.println("1.리스트");
+		for(Person p : phoneList)
+		{
+			int i=1;
+			System.out.print(i+".");
+			p.showinfo();
+			++i;
+		}
 	}
 
 	// 2.등록 : 등록을 위한 화면을 출력하고 사용자가 입력한 데이트를 받아 Person의 인스턴스에 담아 전달하는 메소드
 	public Person showAdd() {
-
+		Person p1 = new Person();
+		System.out.print("이름 : ");
+		p1.setName(sc.next());
+		System.out.print("휴대전화 : ");
+		p1.setHp(sc.next());
+		System.out.print("회사전화 : ");
+		p1.setCompany(sc.next());
+		System.out.print("[등록되었습니다.]");
+		System.out.println("");
+		phoneList.add(p1);
 	}
 
 	// 등록 완료시 결과 출력 메소드

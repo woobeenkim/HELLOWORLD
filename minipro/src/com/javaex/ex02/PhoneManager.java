@@ -50,9 +50,9 @@ public class PhoneManager {
 	// 1.리스트선택시
 	public void showList() throws IOException{
 		System.out.println("1.리스트");
+		int i=1;
 		for(Person p : pList)
 		{
-			int i=1;
 			System.out.print(i+".");
 			p.showinfo();
 			++i;
@@ -61,6 +61,8 @@ public class PhoneManager {
 
 	// 2.등록선택시
 	public void showAdd() throws IOException{
+		Writer fw = new FileWriter("c:\\javaStudy\\workspace\\minipro\\PhoneDB.txt",true);
+      	BufferedWriter bw = new BufferedWriter(fw);
 		Person p1 = new Person();
 		System.out.print("이름 : ");
 		p1.setName(sc.next());
@@ -70,17 +72,30 @@ public class PhoneManager {
 		p1.setCompany(sc.next());
 		System.out.print("[등록되었습니다.]");
 		System.out.println("");
+		String c = p1.getName()+","+p1.getHp()+","+p1.getCompany();
 		pList.add(p1);
+		System.out.println(c);
+		bw.write(c);
+		bw.write("\n");
 	}
 
 	// 3.삭제선택시
 	public void showRemove() throws IOException{
+		Writer fw1 = new FileWriter("c:\\javaStudy\\workspace\\minipro\\PhoneDB.txt");
+      	BufferedWriter bw1 = new BufferedWriter(fw1);
 		int i;
 		System.out.println("<3.삭제>");
 		System.out.println(">번호 : ");
 		i = sc.nextInt();
 		pList.remove(i-1);
+		for(Person p : pList)
+		{
+			String c = p.getName()+","+p.getHp()+","+p.getCompany();
+			bw1.write(c);
+			bw1.write("\n");
+		}
 		System.out.println("[삭제되었습니다.]");	
+		bw1.close();
 	}
 
 	// 4.검색선택시
