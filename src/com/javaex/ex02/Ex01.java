@@ -1,38 +1,41 @@
 package com.javaex.ex02;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 
 public class Ex01 {
+	public static void main(String[] args) throws IOException
+	{
+		Writer fw = new FileWriter("C:\\javaStudy\\file\\song.text");
+		BufferedWriter bfw = new BufferedWriter(fw);
+		Reader fr = new FileReader("C:\\javaStudy\\file\\song.text");
+		BufferedReader bfr = new BufferedReader(fr);
+		String s = "í•™êµì¢…ì´ ë•¡ë–™ë–™";
+		
+		bfw.write(s);
+		bfw.newLine();
+		bfw.write("ì–´ì„œ ëª¨ì´ì");
+		bfw.newLine();
+		bfw.write("ì„ ìƒë‹˜ì´ ìš°ë¦¬ë¥¼");
+		bfw.newLine();
+		bfw.write("ê¸°ë‹¤ë¦¬ì‹ ë‹¤");
+		bfw.close();
+		
+		while(true)
+		{
+			String data = bfr.readLine();
+			if(data == null)
+			{
+				break;
+			}
+			
+		}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int i = 2345;
-		double d = 3.14;
-		String str = "±Â¸ğ´×";
-		char c = 'ÇÑ';
-		String s = "ÇÑ";
 		
-		String name = "À¯ÀçÇĞ";
-		
-		System.out.println("¾È³çÇÏ¼¼¿ä");
-		System.out.println(name);
-		System.out.println("name");
-		
-		System.out.print("¾È³ç");
-		System.out.println("ÇÏ¼¼¿ä");
-		
-		System.out.println(str);
-		System.out.println(str+str);
-		
-		System.out.println(i + str);
-		System.out.println(d + str);
-		System.out.println(c + str);
-		System.out.println(str + " ¶û ");
-		
-		System.out.println("Á¦ ÀÌ¸§Àº " + name + " ÀÔ´Ï´Ù.");
-		System.out.println("Á¦ ÀÌ¸§Àº \"" + name + "\" ÀÔ´Ï´Ù.");
-		System.out.println("Á¦ ÀÌ¸§Àº \t" + name + "\t ÀÔ´Ï´Ù.");
-		System.out.println("Á¦ ÀÌ¸§Àº \\" + name + "\\ ÀÔ´Ï´Ù.");
-		System.out.println("Á¦ ÀÌ¸§Àº \n" + name + "\n ÀÔ´Ï´Ù.");	
 	}
 }

@@ -1,26 +1,30 @@
 package com.javaex.ex01;
 
-public class EX01
-{
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-	public static void main(String[] args)
-	{	/*
-		int MyAge;
-		MyAge=29;
-		System.out.println(MyAge);
-		MyAge=30;
-		System.out.println(MyAge);
-	 	
+public class EX01 {
+
+	public static void main(String[] args) throws IOException{
+		InputStream in = new FileInputStream("C:\\javaStudy\\file\\img.jpg");
+		OutputStream out = new FileOutputStream("C:\\javaStudy\\file\\buff.jpg");
 		
-		int a1;
-		int a2;
-		int a3;
-		*/
-		int a1= 10, a2=20, a3=30;
-		long b1=1234123567890l;
-		System.out.println(a1+ a2 +a3);
-		System.out.println(b1+b1);
+		byte[] buff = new byte[1024];
+		
+		while(true)
+		{
+			int data = in.read(buff);
+			if(data == -1)
+			{
+				break;
+			}
+			out.write(buff);
+		}
+		out.close();
+		in.close();
 		
 	}
 }
- 

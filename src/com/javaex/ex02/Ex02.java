@@ -1,19 +1,27 @@
 package com.javaex.ex02;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 
 public class Ex02 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		String name;
+	public static void main(String[] args) throws IOException
+	{
+		Reader fr = new FileReader("C:\\javaStudy\\file\\ms949.txt");
+		BufferedReader bfr = new BufferedReader(fr);
 		
-		System.out.println("이름을 입력해 주세요");
-		System.out.print("이름 : ");
-		name = sc.nextLine();
-		sc.close();
-		System.out.println("당신의 이름은 " + name + " 입니다");
+		while(true)
+		{
+			String str = bfr.readLine();
+			if(str == null)
+			{
+				break;
+				
+			}
+			System.out.println(str);
+		}
+	bfr.close();
 	}
 
 }
